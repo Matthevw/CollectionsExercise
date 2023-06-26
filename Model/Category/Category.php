@@ -3,11 +3,9 @@
 namespace M2M\CollectionsExercise\Model\Category;
 
 use \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory as CategoryCollection;
-use \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollection;
 
 class Category
 {
-
     /**
      * @var CategoryCollection
      */
@@ -22,11 +20,13 @@ class Category
 
     public function getCategoriesCollection()
     {
+        // Creates a collection of categories then prints array $categories
         $categories = $this->categoryCollection->create()
-            ->addAttributeToSelect('path')
             ->getData();
             
-        print("<pre>".print_r($categories,true)."</pre>"); die;
+        print("<pre>".print_r($categories,true)."</pre>");
+
+        // Returns array $categories
         return $categories;
     }
 }

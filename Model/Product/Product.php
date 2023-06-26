@@ -3,7 +3,6 @@
 namespace M2M\CollectionsExercise\Model\Product;
 
 use \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
-use \Magento\Catalog\Model\ResourceModel\Product\Collection;
 use \Magento\Catalog\Model\ProductRepository;
 
 //Model - dodajemy
@@ -26,19 +25,19 @@ class Product
     
     public function getProductCollection()
     {
+        // Creates and filters a collection of products which type is equal to simple
         $collection = $this->productCollectionFactory->create()->addAttributeToFilter('type_id', ['eq' => 'simple'])->getData();
-        //create() - tworzy obiekt klasy CollectionFactory :)
-        // var_dump($collection);
+
+        // Prints array $collection
         print("<pre>".print_r($collection,true)."</pre>");
     }
 
     public function getProductCollectionBySku(string $sku)
     {
+        // Returns product with the given sku
         $product = $this->productRepository->get($sku);
-        // var_dump($product->getName());
-        // print("<pre>".print_r($product->getName(),true)."</pre>");
+
         return $product;
     }
-
 }
 ?>
